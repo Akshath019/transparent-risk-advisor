@@ -136,7 +136,7 @@ export function SimulationPanel({ transaction, onUpdate }: SimulationPanelProps)
 
       const { error: eventError } = await supabase
         .from('risk_events')
-        .insert(riskEvent);
+        .insert([riskEvent as any]);
 
       if (eventError) throw eventError;
 
@@ -144,7 +144,7 @@ export function SimulationPanel({ transaction, onUpdate }: SimulationPanelProps)
       const { error: updateError } = await supabase
         .from('transactions')
         .update({
-          device_info: deviceInfo,
+          device_info: deviceInfo as any,
           risk_score: newScore,
           status: newStatus,
         })
@@ -189,7 +189,7 @@ export function SimulationPanel({ transaction, onUpdate }: SimulationPanelProps)
 
       const { error: eventError } = await supabase
         .from('risk_events')
-        .insert(riskEvent);
+        .insert([riskEvent as any]);
 
       if (eventError) throw eventError;
 
